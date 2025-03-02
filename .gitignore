@@ -3,6 +3,7 @@ my_mujoco_env/
 assets/
 training_result/
 ppo_logs/
+cad/
 
 *.zip
 *.npy

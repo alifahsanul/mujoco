@@ -1,0 +1,4 @@
+Reinforcement learning
+- Setting up
+-- Observations
+--- Need position, velocity, acceleration. Distance is optional

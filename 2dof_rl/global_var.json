@@ -1,0 +1,12 @@
+{
+    "robot_min_sweep_radius": 1.40,
+    "robot_max_sweep_radius": 2.00,
+    "arm1": {
+        "min_angle": "-inf",
+        "max_angle": "inf"
+    },
+    "arm2": {
+        "min_angle_deg": -15,
+        "max_angle_deg": 195
+    }
+}
