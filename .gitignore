@@ -1,1 +1,12 @@
+__pycache__/
 my_mujoco_env/
+assets/
+training_result/
+ppo_logs/
+
+*.zip
+*.npy
+*.xlsx
+
+MUJOCO_LOG.TXT
+requirements.txt
