@@ -7,40 +7,41 @@
   </visual>
 
   <asset>
-    <mesh name="base_mesh" file="cad/base.stl" scale="0.01 0.01 0.01"/>
-    <mesh name="arm1_mesh" file="cad/arm1.stl" scale="0.01 0.01 0.01"/>
-    <mesh name="arm2_mesh" file="cad/arm2.stl" scale="0.01 0.01 0.01"/>
+    <mesh name="base_mesh" file="cad/base.stl" scale="1 1 1"/>
+    <mesh name="arm1_mesh" file="cad/arm1.stl" scale="1 1 1"/>
+    <mesh name="arm2_mesh" file="cad/arm2.stl" scale="1 1 1"/>
   </asset>
 
   <worldbody>    
-    <light name="main_light" pos="0 1 2" dir="0 -1 -1"/>
+    <light name="main_light" pos="0 200 300" dir="0 -1 -1"/>
+    <camera name="my_camera" mode="fixed" pos="0 250 300" quat="0 0 0.2 0.5" fovy="80"/>
 
     <!-- Define the base of the robot -->
     <body name="base" pos="0 0 0">
-      <geom type="mesh" mesh="base_mesh" rgba="0.8 0.8 0.8 1" contype="0" conaffinity="0"/>
+      <geom name="base_geom" type="mesh" mesh="base_mesh" rgba="0.8 0.8 0.8 1" mass="0.1" contype="0" conaffinity="0"/>
       
       <!-- Define the rotating arm -->
-      <body name="arm1" pos="0.15 0.15 0.3">
-        <joint name="arm1_joint" type="hinge" axis="0 0 1" pos="-0.15 -0.15 0"/>
-        <geom type="mesh" mesh="arm1_mesh" rgba="0.1 0.1 0.8 1" pos="0 0 0"/>
+      <body name="arm1" pos="15 15 30">
+        <joint name="arm1_joint" type="hinge" axis="0 0 1" pos="-15 -15 0"/>
+        <geom name="arm1_geom" type="mesh" mesh="arm1_mesh" rgba="0.1 0.1 0.8 1" pos="0 0 0" mass="0.1"/>
         
         <!-- Define the second rotating arm -->
-        <body name="arm2" pos="-0.15 -1.06 1.15">
+        <body name="arm2" pos="-15 -106 115">
           <joint name="arm2_joint" type="hinge" axis="0 0 1" pos="0 0 0" range="-15 195"/>
-          <geom type="mesh" mesh="arm2_mesh" rgba="0.2 0.3 0.2 1" pos="0 0 0"/>
-          <site name="arm2_tip" pos="-1.2 0 0.1" size="0.01" rgba="1 0 0 1"/>
+          <geom name="arm2_geom" type="mesh" mesh="arm2_mesh" rgba="0.2 0.3 0.2 1" pos="0 0 0" mass="0.1"/>
+          <site name="arm2_tip" pos="-120 0 10" size="5" rgba="1 0 0 1"/>
         </body>
       </body>
     </body>
 
-    <body name="ball" pos="-1 -1.2 1.5">
-      <geom name="ball_geom" type="sphere" size="0.1" rgba="0 1 0 1" contype="0" conaffinity="0"/>
+    <body name="ball" pos="-100 -120 150">
+      <geom name="ball_geom" type="sphere" size="10" rgba="0 1 0 1" contype="0" conaffinity="0"/>
     </body>
   </worldbody>
 
   <actuator>
-    <motor joint="arm1_joint" ctrlrange="-2 2" ctrllimited="true"/>
-    <motor joint="arm2_joint" ctrlrange="-2 2" ctrllimited="true"/>
+    <motor joint="arm1_joint" ctrlrange="-1 1" ctrllimited="true" gear="1000"/>
+    <motor joint="arm2_joint" ctrlrange="-1 1" ctrllimited="true" gear="1000"/>
   </actuator>
 
   <sensor>

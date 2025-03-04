@@ -1,0 +1,19 @@
+Reinforcement learning
+- Setting up
+-- Observations
+--- Need position, velocity, acceleration. Distance is optional
+--- No need to normalize. Maybe wrong, now i normalized it.
+--- When setting up  random initial ball location, choose easy problem. Maybe only 2 quadrants (vs 4).
+-- Reward
+--- Make it around -100 to 10,000 (for success) is good. Can't learn if it's too big
+- Training
+-- Gamma is important
+-- Training length should be more than 1e6, with saving video or other file every 1e5
+-- Architecutre is important, use very deep NN (6 layers, 64-128 nodes). Now i am trying with [8 8], for first 100k training seems the same result as [128, 128, 128 64 64 64]
+-- Learning rate, use scheduler decay. Try with small 1e-8 as well (VERY IMPORTANT).
+- Monitoring
+-- Video
+--- Just take every 10 steps, also when done=True
+--- Set fps to be low, like 2
+-- Observation
+--- After some time training (400k eps), it tends to move very fast, even though i have added velocity^2 penalty

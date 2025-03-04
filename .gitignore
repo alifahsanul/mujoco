@@ -11,3 +11,6 @@ cad/
 
 MUJOCO_LOG.TXT
 requirements.txt
+
+# Ignore TensorBoard event files
+events.out.tfevents.*
